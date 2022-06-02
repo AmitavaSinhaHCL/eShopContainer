@@ -23,7 +23,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal--settings coverlet.runsettings --logger:trx
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:

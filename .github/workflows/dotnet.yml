@@ -38,4 +38,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: Publish
-      run: dotnet publish eShopContainer/tree/main/src/Web/web.csproj -c Release -o website
+      run: dotnet publish eShopContainer/src/Web/web.csproj -c Release -o website

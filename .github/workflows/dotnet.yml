@@ -26,7 +26,7 @@ jobs:
     - name: Test with dotnet
       run: dotnet test --logger "trx;LogFileName=unittests.trx" --results-directory "TestResults/"
     - name: Publish
-      run: dotnet publish eShopContainer/src/Web/web.csproj -c Release -o website
+      run: dotnet publish eShopContainer/tree/main/src/Web/web.csproj -c Release -o website
     - name: Upload dotnet test results
       uses: actions/upload-artifact@v3
       with:

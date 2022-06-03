@@ -24,12 +24,12 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test with dotnet
-      run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      run: dotnet test --logger "trx;LogFileName=unittests.trx" --results-directory "TestResults/"
     - name: Upload dotnet test results
       uses: actions/upload-artifact@v3
       with:
-        name: dotnet-results-6.0.x
-        path: TestResults-6.0.x
+        name: unittests.trx
+        path: TestResults/
         # Use always() to always run this step to publish test results when there are test failures
       if: ${{ always() }}
     - name: SonarCloud Scan

@@ -11,16 +11,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dotnet-version: [ '3.0', '3.1.x', '6.0.x' ]
+    
     
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v1.9.0
       with:
-        dotnet-version: ${{ matrix.dotnet-version }}
+        dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -30,8 +28,8 @@ jobs:
     - name: Upload dotnet test results
       uses: actions/upload-artifact@v3
       with:
-        name: dotnet-results-${{ matrix.dotnet-version }}
-        path: TestResults-${{ matrix.dotnet-version }}
+        name: dotnet-results-6.0.x
+        path: TestResults-6.0.x
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
     - name: SonarCloud Scan
